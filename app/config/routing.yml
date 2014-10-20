@@ -1,0 +1,3 @@
+todo_mvc_todo_mvc:
+    resource: "@TodoMVCTodoMVCBundle/Controller/TodoController.php"
+    type:     annotation

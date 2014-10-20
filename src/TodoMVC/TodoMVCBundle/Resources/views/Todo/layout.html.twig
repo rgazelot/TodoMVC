@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js • TodoMVC</title>
+    <link rel="stylesheet" href="{{ asset('bundles/todomvctodomvc/css/main.css') }}">
+  </head>
+  <body>
+    <header id="actions">
+      <a href="{{ path('list') }}" class="button">list</a>
+      <a href="{{ path('create') }}" class="button">create</a>
+    </header>
+    <section id="todoapp">
+      {% block content %}
+
+      {% endblock %}
+    </section>
+
+    <footer id="info">
+      <p>Double-click to edit a todo</p>
+    </footer>
+  </body>
+</html>

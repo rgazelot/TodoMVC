@@ -1,0 +1,10 @@
+{% extends 'TodoMVCTodoMVCBundle:Todo:layout.html.twig' %}
+
+{% block content %}
+    <header id="header">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form.title, {'attr': {'class': 'new-todo', 'placeholder': 'What needs to be done?'}}) }}
+    {{ form_end(form) }}
+    </header>
+{% endblock %}
