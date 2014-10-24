@@ -18,7 +18,7 @@ class TodoController extends Controller
     public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $todos = $em->getRepository('TodoMVCTodoMVCBundle:Todo')->all($request->query->get('sort', '-createdAt'));
+        $todos = $em->getRepository('TodoMVCTodoMVCBundle:Todo')->all($request->query->get('sort', '-createdAt'), $request->query->get('filter', null));
 
         $checkForms  = [];
         $deleteForms = [];
@@ -35,10 +35,16 @@ class TodoController extends Controller
                 ->createView();
         }
 
+        $clearForm = $this->createFormBuilder()
+            ->add('clear', 'submit')
+            ->getForm()
+            ->createView();
+
         return $this->render('TodoMVCTodoMVCBundle:Todo:list.html.twig', [
             'todos'       => $todos,
             'checkForms'  => $checkForms,
             'deleteForms' => $deleteForms,
+            'clearForm'   => $clearForm,
         ]);
     }
 
@@ -92,6 +98,24 @@ class TodoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($em->getRepository('TodoMVCTodoMVCBundle:Todo')->find($id));
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('list'));
+    }
+
+    /**
+     * @Route("/clear", name="clear")
+     * @Method("DELETE")
+     */
+    public function clearAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $todos = $em->getRepository('TodoMVCTodoMVCBundle:Todo')->findBy(['completed' => true]);
+
+        foreach ($todos as $todo) {
+            $em->remove($todo);
+        }
+
         $em->flush();
 
         return $this->redirect($this->generateUrl('list'));

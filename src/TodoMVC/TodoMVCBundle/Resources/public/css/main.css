@@ -370,7 +370,7 @@ label[for='toggle-all'] {
     font-weight: bold;
 }
 
-#clear-completed {
+.clear-completed {
     float: right;
     position: relative;
     line-height: 20px;
