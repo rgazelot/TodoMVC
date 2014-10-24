@@ -1,0 +1,7 @@
+default:
+    extensions:
+        # Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            goutte: ~
+            selenium2: ~
+            base_url: http://localhost/TodoMVC/web/app_dev.php
