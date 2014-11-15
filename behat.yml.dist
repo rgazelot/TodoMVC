@@ -1,9 +1,5 @@
 default:
-  context:
-    parameters:
-      reset_database : false
-      environment    : dev
-      debug          : true
-  extensions:
-    Behat\MinkExtension\Extension:
-      base_url : 'http://localhost/TodoMVC/web/app_dev.php'
+    extensions:
+        Behat\MinkExtension\Extension:
+            goutte: ~
+            base_url: "http://localhost/TodoMVC/web/app_dev.php"
