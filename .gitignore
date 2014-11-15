@@ -7,3 +7,5 @@ vendor/
 /app/logs/*
 
 /web/bundles/*
+behat.yml
+features/*
