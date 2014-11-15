@@ -33,13 +33,13 @@
 
         <ul id="filters">
             <li>
-                <a href="{{ path('list', {'sort': '-createdAt'}) }}" class="selected">All</a>
+                <a id="link_list" href="{{ path('list', {'sort': '-createdAt'}) }}" class="selected">All</a>
             </li>
             <li>
-                <a href="{{ path('list', {'filter': '-completed'}) }}">Active</a>
+                <a id="link_active" href="{{ path('list', {'filter': '-completed'}) }}">Active</a>
             </li>
             <li>
-                <a href="{{ path('list', {'filter': 'completed'}) }}">Completed</a>
+                <a id="link_completed" href="{{ path('list', {'filter': 'completed'}) }}">Completed</a>
             </li>
         </ul>
 
