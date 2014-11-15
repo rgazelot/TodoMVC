@@ -47,7 +47,7 @@ class Todo
      */
     private $completed = false;
 
-    public function __construct($title)
+    public function __construct($title = null)
     {
         $this->title = $title;
         $this->createdAt = new Datetime;
