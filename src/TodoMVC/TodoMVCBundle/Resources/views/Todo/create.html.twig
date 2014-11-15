@@ -5,6 +5,7 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
     {{ form_widget(form.title, {'attr': {'class': 'new-todo', 'placeholder': 'What needs to be done?'}}) }}
+    {{ form_widget(form.create, {'attr': {'style': 'display:none'}}) }}
     {{ form_end(form) }}
     </header>
 {% endblock %}

@@ -57,6 +57,7 @@ class TodoController extends Controller
 
         $form = $this->createFormBuilder($todo)
             ->add('title', 'text')
+            ->add('create', 'submit')
             ->getForm();
 
         $form->handleRequest($request);
