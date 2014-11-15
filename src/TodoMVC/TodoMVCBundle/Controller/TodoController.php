@@ -121,4 +121,41 @@ class TodoController extends Controller
 
         return $this->redirect($this->generateUrl('list'));
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contactAction(Request $request)
+    {
+        $form = $this->createFormBuilder()
+            ->add('email', 'email')
+            ->add('message', 'text')
+            ->add('send', 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $data = $form->getData();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Contact')
+                ->setFrom('todomvc@otodomvc.com')
+                ->setTo($data['email'])
+                ->setBody(
+                    $this->renderView(
+                        'TodoMVCTodoMVCBundle:Todo:email.html.twig',
+                        array('message' => $data['message'])
+                    )
+                )
+            ;
+            $this->get('mailer')->send($message);
+
+            return $this->redirect($this->generateUrl('list'));
+        }
+
+        return $this->render('TodoMVCTodoMVCBundle:Todo:contact.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
