@@ -1,5 +1,17 @@
 default:
     extensions:
-        Behat\MinkExtension\Extension:
-            goutte: ~
-            base_url: "http://localhost/TodoMVC/web/app_dev.php"
+        Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            base_url:  'http://localhost/TodoMVC/web/app_dev.php'
+            sessions:
+                my_session:
+                    symfony2: ~
+
+    suites:
+        my_suite:
+            type: symfony_bundle
+            bundle: TodoMVCTodoMVCBundle
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - %paths.base%/features/todomvc
